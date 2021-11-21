@@ -32,6 +32,14 @@ class TSModbusInvalidResponseSize(Exception):
         )
 
 
+class TSModbusDeviceNoResponse(Exception):
+    """Exception raised when the device not response"""
+    def __init__(self):
+        super().__init__(
+            "Device no response"
+        )
+
+
 class TSModbusInvalidResponse(Exception):
     """Exception raised when response is not equal request"""
     def __init__(self, request, response: bytes):

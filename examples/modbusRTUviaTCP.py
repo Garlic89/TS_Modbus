@@ -5,7 +5,7 @@ conn = connections.TCPConnection({
     'port': 4001
 })
 
-conn.open_connection()
+conn.open_connection(timeout=1)
 mb = modbusRTU_client.TSMbRTUClient()
 
 # Read registers

@@ -5,7 +5,7 @@ conn = connections.TCPConnection({
     'port': 502
 })
 
-conn.open_connection()
+conn.open_connection(timeout=1)
 mb = modbusTCP_client.TSMbTCPClient()
 
 # Read registers

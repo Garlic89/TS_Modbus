@@ -5,7 +5,7 @@ from . import const
 from . import commons as cmn
 from .connections import _TSConnection
 from .exceptions import (TSModbusInvalidDataSize, TSModbusInvalidResponse, TSModbusInvalidInputParamsType,
-                         TSModbusInvalidInputValuesTypes)
+                         TSModbusInvalidInputValuesTypes, TSModbusDeviceNoResponse)
 
 
 class _TSMbClient:
@@ -80,6 +80,8 @@ class _TSMbClient:
             # Wait for answer
             response = connection.response()
             self.ts_last_request['response'] = response
+            if len(response) <= 0:
+                raise TSModbusDeviceNoResponse
             # Check response CRC
             response = self._check_crc(response)
             # Check response header
